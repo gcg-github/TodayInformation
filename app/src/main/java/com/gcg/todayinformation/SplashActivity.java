@@ -1,36 +1,39 @@
 package com.gcg.todayinformation;
 
-import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.VideoView;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
-public class SplashActivity extends AppCompatActivity {
+import butterknife.BindView;
 
-    private VideoView mVideoview;
-    private TextView mTextView;
+@InjectView(layoutId = R.layout.activity_splash)
+public class SplashActivity extends BaseActivity {
+
+    @BindView(R.id.activity_splash_videoview)
+    public VideoView mVideoview;
+    @BindView(R.id.activity_splash_textview)
+    public TextView mTextView;
+
     private CustomDownTimeTicker downTimeTicker;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+    protected void afterInitView() {
+        initView();
+        initTimer();
+    }
 
-        mVideoview = findViewById(R.id.activity_splash_videoview);
+    private void initView(){
         mVideoview.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.splash));
         mVideoview.setOnPreparedListener(mp -> mp.start());
-
         mVideoview.setOnCompletionListener(mp -> mp.start());
 
-        mTextView = findViewById(R.id.activity_splash_textview);
         mTextView.setOnClickListener(v -> {
             MainActivity.start(SplashActivity.this);
             SplashActivity.this.finish();
         });
+    }
+
+    private void initTimer(){
         downTimeTicker = new CustomDownTimeTicker(5, new CustomDownTimeTicker.ITimeHandler() {
             @Override
             public void onTicker(int curTime) {
