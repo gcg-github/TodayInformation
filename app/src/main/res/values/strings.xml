@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TodayInformation</string>
+    <string name="跳过">跳过</string>
+    <string name="上海">上海</string>
+    <string name="杭州">杭州</string>
+    <string name="北京">北京</string>
+    <string name="深圳">深圳</string>
 </resources>

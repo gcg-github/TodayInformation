@@ -22,21 +22,15 @@ public class SplashActivity extends AppCompatActivity {
 
         mVideoview = findViewById(R.id.activity_splash_videoview);
         mVideoview.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.splash));
-        mVideoview.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.start();
-            }
-        });
+        mVideoview.setOnPreparedListener(mp -> mp.start());
 
-        mVideoview.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                mp.start();
-            }
-        });
+        mVideoview.setOnCompletionListener(mp -> mp.start());
 
         mTextView = findViewById(R.id.activity_splash_textview);
+        mTextView.setOnClickListener(v -> {
+            MainActivity.start(SplashActivity.this);
+            SplashActivity.this.finish();
+        });
         downTimeTicker = new CustomDownTimeTicker(5, new CustomDownTimeTicker.ITimeHandler() {
             @Override
             public void onTicker(int curTime) {
@@ -46,13 +40,6 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 mTextView.setText("跳过");
-                mTextView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        MainActivity.start(SplashActivity.this);
-                        SplashActivity.this.finish();
-                    }
-                });
             }
         });
         downTimeTicker.start();

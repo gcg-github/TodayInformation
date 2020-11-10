@@ -1,15 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:text="我是主页面"
-        android:gravity="center"
+    <FrameLayout
+        android:layout_above="@id/fl_act_main_bottom"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatBtn_act_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/dp_32"/>
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/fl_act_main_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_55"
+        android:background="@color/black_30"
+        android:layout_alignParentBottom="true">
+
+        <RadioGroup
+            android:id="@+id/rg_act_main_sh_hz"
+            style="@style/style_rg_act_main">
+            <RadioButton
+                android:id="@+id/rb_rg_act_main_shhz_sh"
+                android:text="@string/上海"
+                android:drawableTop="@drawable/selector_rb_rg_act_main_shhz_sh"
+                style="@style/style_rb_act_main"
+                android:checked="true"/>
+            <RadioButton
+                android:id="@+id/rb_rg_act_main_shhz_hz"
+                android:text="@string/杭州"
+                android:drawableTop="@drawable/selector_rb_rg_act_main_shhz_hz"
+                style="@style/style_rb_act_main"/>
+        </RadioGroup>
+        <RadioGroup
+            android:id="@+id/rg_act_main_bj_sz"
+            android:visibility="gone"
+            style="@style/style_rg_act_main">
+            <RadioButton
+                android:id="@+id/rb_rg_act_main_bjsz_bj"
+                android:text="@string/北京"
+                android:drawableTop="@drawable/selector_rb_rg_act_main_bjsz_bj"
+                style="@style/style_rb_act_main"
+                android:checked="true"/>
+            <RadioButton
+                android:id="@+id/rb_rg_act_main_bjsz_sz"
+                android:text="@string/深圳"
+                android:drawableTop="@drawable/selector_rb_rg_act_main_bjsz_sz"
+                style="@style/style_rb_act_main"/>
+        </RadioGroup>
+    </FrameLayout>
+
+</RelativeLayout>

@@ -30,8 +30,10 @@ public class CustomDownTimeTicker implements Runnable{
 
     public void cancel(){
         isRunning = false;
-        mHandler.removeCallbacks(this);
-        mHandler = null;
+        if (mHandler != null) {
+            mHandler.removeCallbacks(this);
+            mHandler = null;
+        }
         mTime = 0;
         mTimeHandler = null;
     }
