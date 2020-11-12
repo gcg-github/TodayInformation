@@ -1,20 +1,25 @@
-package com.gcg.todayinformation;
+package com.gcg.todayinformation.splash;
 
 import android.net.Uri;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.gcg.todayinformation.main.MainActivity;
+import com.gcg.todayinformation.R;
+import com.gcg.todayinformation.base.BaseActivity;
+import com.gcg.todayinformation.base.InjectView;
+
 import butterknife.BindView;
 
 @InjectView(layoutId = R.layout.activity_splash)
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends BaseActivity implements ISplashContract.IView{
 
     @BindView(R.id.activity_splash_videoview)
     public VideoView mVideoview;
     @BindView(R.id.activity_splash_textview)
     public TextView mTextView;
 
-    private CustomDownTimeTicker downTimeTicker;
+    private ISplashContract.IPresenter mSplashPresenter = new SplashPresenter(this);
 
     @Override
     protected void afterInitView() {
@@ -34,23 +39,17 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void initTimer(){
-        downTimeTicker = new CustomDownTimeTicker(5, new CustomDownTimeTicker.ITimeHandler() {
-            @Override
-            public void onTicker(int curTime) {
-                mTextView.setText(curTime + "秒");
-            }
-
-            @Override
-            public void onFinish() {
-                mTextView.setText("跳过");
-            }
-        });
-        downTimeTicker.start();
+        mSplashPresenter.initTimer();
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        downTimeTicker.cancel();
+    public void onTimerTicker(int ticker) {
+        mTextView.setText("跳过("+ticker+"s)");
+    }
+
+    @Override
+    public void onTimerFinish() {
+        MainActivity.start(SplashActivity.this);
+        SplashActivity.this.finish();
     }
 }

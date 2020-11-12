@@ -1,4 +1,4 @@
-package com.gcg.todayinformation;
+package com.gcg.todayinformation.base;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

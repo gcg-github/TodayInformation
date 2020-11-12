@@ -1,13 +1,17 @@
-package com.gcg.todayinformation;
+package com.gcg.todayinformation.base;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+
+import com.gcg.todayinformation.main.MainActivity;
+import com.gcg.todayinformation.mvp.view.LifeCircleMvpActivity;
 
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends LifeCircleMvpActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package com.gcg.todayinformation;
+package com.gcg.todayinformation.splash;
 
 import android.os.Handler;
 
