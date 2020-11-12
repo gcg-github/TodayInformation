@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.gcg.todayinformation.mvp.presenter.ILifeCircle;
 import com.gcg.todayinformation.mvp.view.IMvpView;
 
@@ -46,12 +49,12 @@ public class MvpController implements ILifeCircle {
     }
 
     @Override
-    public void onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState, View view) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Iterator<ILifeCircle> iterator = lifeCircles.iterator();
         while (iterator.hasNext()){
             ILifeCircle lifeCircle = iterator.next();
             if (lifeCircle != null){
-                lifeCircle.onCreateView(inflater, container, savedInstanceState, view);
+                lifeCircle.onViewCreated(view, savedInstanceState);
             }
         }
     }

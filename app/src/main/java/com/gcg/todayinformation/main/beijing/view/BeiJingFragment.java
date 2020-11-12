@@ -1,20 +1,14 @@
 package com.gcg.todayinformation.main.beijing.view;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import com.gcg.todayinformation.R;
+import com.gcg.todayinformation.base.BaseFragment;
+import com.gcg.todayinformation.base.InjectView;
 
-public class BeiJingFragment extends Fragment {
-    @Nullable
+@InjectView(layoutId = R.layout.fragment_beijing)
+public class BeiJingFragment extends BaseFragment {
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_beijing, container, false);
+    protected void afterInitView() {
+
     }
 }

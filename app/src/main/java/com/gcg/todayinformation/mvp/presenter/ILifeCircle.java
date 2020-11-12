@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.gcg.todayinformation.mvp.view.IMvpView;
 
 /*
@@ -19,7 +22,7 @@ public interface ILifeCircle {
 
     void onCreate(Bundle savedInstanceState, Intent intent, Bundle argments);
 
-    void onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState, View view);
+    void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState);
 
     void onActivityCreated(Bundle savedInstanceState, Intent intent, Bundle argments);
 

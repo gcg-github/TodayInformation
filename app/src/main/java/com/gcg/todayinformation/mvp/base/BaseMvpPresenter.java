@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.gcg.todayinformation.mvp.presenter.LifeCircleMvpPresenter;
 import com.gcg.todayinformation.mvp.view.IMvpView;
 
@@ -32,7 +35,7 @@ public abstract class BaseMvpPresenter<T extends IMvpView> extends LifeCircleMvp
     }
 
     @Override
-    public void onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState, View view) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
     }
 

@@ -33,7 +33,7 @@ public abstract class LifeCircleMvpActivity extends AppCompatActivity implements
             intent = new Intent();
         MvpController controller = getMvpController();
         if (controller != null)
-            controller.onCreate(savedInstanceState, intent, null);
+            controller.onCreate(savedInstanceState, intent, new Bundle());
     }
 
     @Override
